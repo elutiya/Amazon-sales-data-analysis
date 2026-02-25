@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Advanced KPI Dashboard</title>
+
+<style>
+body {
+  background: linear-gradient(to right, #141e30, #243b55);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  padding: 30px 0 10px;
+  font-size: 32px;
+}
+
+.section-title {
+  margin: 40px 0 20px;
+  font-size: 22px;
+  border-left: 5px solid #4cc9f0;
+  padding-left: 10px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* KPI GRID */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(2500px, 1fr));
+  gap: 20px;
+}
+
+.kpi-card {
+  background: #1f2a38;
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+/* CHART SECTION */
+.chart-card {
+  background: #1f2a38;
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  border-radius: 10px;
+  background: white;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📊 Advanced KPI Dashboard</h1>
+
+<div class="container">
+
+  <div class="section-title">Key Performance Indicators</div>
+
+  <!-- <div class="kpi-grid"> -->
+
+    <div class="kpi-card">
+      <iframe src="../visuals/Calculate_KPIs.html"></iframe>  
+    </div>
+
+    <div class="kpi-card">
+      <iframe src="../visuals/top_revenue.html"></iframe>
+    </div>
+
+    <div class="kpi-card">
+      <iframe src="../visuals/revenue_per_customer.html"></iframe>
+    </div>
+
+    <div class="kpi-card">
+      <iframe src="../visuals/Orders_per_customer.html"></iframe>
+    <!-- </div> -->
+
+  </div>
+
+  <div class="section-title">Performance Analysis</div>
+
+  <div class="chart-card">
+    <iframe src="../visuals/New_vs_Returning_Customers_Over_Time.html"></iframe>
+  </div>
+
+  <div class="chart-card">
+    <iframe src="../visuals/sales_by_location.html"></iframe>
+  </div>
+
+  <div class="chart-card">
+    <iframe src="../visuals/top_10_product.html"></iframe>
+  </div>
+
+  <div class="chart-card">
+    <iframe src="../visuals/revenue_comparision.html"></iframe>
+  </div>
+
+  <div class="chart-card">
+    <iframe src="../visuals/yearly_Revenue_Trend.html"></iframe>
+  </div>
+
+</div>
+
+</body>
+</html>
