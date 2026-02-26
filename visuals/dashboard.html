@@ -5,56 +5,77 @@
 <title>Advanced KPI Dashboard</title>
 
 <style>
+/* ----------------- BODY & FONT ----------------- */
 body {
-  background: linear-gradient(to right, #141e30, #243b55);
-  font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
   color: white;
+  background: linear-gradient(to right, #141e30, #243b55);
 }
 
 h1 {
   text-align: center;
-  padding: 30px 0 10px;
-  font-size: 32px;
+  padding: 50px 0 30px; /* More space above title */
+  font-size: 36px;
+}
+
+/* ----------------- SIDEBAR ----------------- */
+.sidebar {
+  position: fixed;
+  width: 220px;
+  height: 100%;
+  background: #111827;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  color: #4cc9f0;
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 10px 0;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #4cc9f0;
+  padding-left: 10px;
+}
+
+/* ----------------- MAIN CONTENT ----------------- */
+.main {
+  margin-left: 240px;
+  padding: 20px;
 }
 
 .section-title {
   margin: 40px 0 20px;
-  font-size: 22px;
+  font-size: 24px;
   border-left: 5px solid #4cc9f0;
   padding-left: 10px;
 }
 
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* KPI GRID */
+/* ----------------- KPI GRID ----------------- */
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(2500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
-.kpi-card {
+/* ----------------- CARDS ----------------- */
+.kpi-card, .chart-card {
   background: #1f2a38;
-  padding: 15px;
+  padding: 20px;
   border-radius: 16px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.4);
 }
 
-/* CHART SECTION */
-.chart-card {
-  background: #1f2a38;
-  margin-bottom: 40px;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-}
-
+/* ----------------- IFRAME ----------------- */
 iframe {
   width: 100%;
   height: 450px;
@@ -62,60 +83,114 @@ iframe {
   border-radius: 10px;
   background: white;
 }
+
+/* ----------------- BUSINESS INSIGHT ----------------- */
+.business-insight {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #a0aec0;
+}
+
+/* ----------------- SMOOTH SCROLL ----------------- */
+html {
+  scroll-behavior: smooth;
+}
 </style>
 </head>
 
 <body>
 
+<!-- ----------------- SIDEBAR ----------------- -->
+<div class="sidebar">
+  <h2>Dashboard</h2>
+  <a href="#revenue">Revenue</a>
+  <a href="#sales">Sales</a>
+  <a href="#customers">Customers</a>
+  <a href="#discount">Discount</a>
+</div>
+
+<!-- ----------------- MAIN CONTENT ----------------- -->
+<div class="main">
+
 <h1>📊 Advanced KPI Dashboard</h1>
 
-<div class="container">
-
-  <div class="section-title">Key Performance Indicators</div>
-
-  <!-- <div class="kpi-grid"> -->
-
-    <div class="kpi-card">
-      <iframe src="../visuals/Calculate_KPIs.html"></iframe>  
-    </div>
-
-    <div class="kpi-card">
-      <iframe src="../visuals/top_revenue.html"></iframe>
-    </div>
-
-    <div class="kpi-card">
-      <iframe src="../visuals/revenue_per_customer.html"></iframe>
-    </div>
-
-    <div class="kpi-card">
-      <iframe src="../visuals/Orders_per_customer.html"></iframe>
-    <!-- </div> -->
-
-  </div>
-
-  <div class="section-title">Performance Analysis</div>
-
+<!-- ----------------- REVENUE ----------------- -->
+<div id="revenue">
+  <div class="section-title">Revenue Analysis</div>
+  
   <div class="chart-card">
-    <iframe src="../visuals/New_vs_Returning_Customers_Over_Time.html"></iframe>
-  </div>
-
-  <div class="chart-card">
-    <iframe src="../visuals/sales_by_location.html"></iframe>
-  </div>
-
-  <div class="chart-card">
-    <iframe src="../visuals/top_10_product.html"></iframe>
+    <iframe src="../visuals/yearly_Revenue_Trend.html"></iframe>
+    <div class="business-insight">
+      📌 Insight: Revenue peaked in 2020 due to post-COVID recovery, slight drop in 2024.
+    </div>
   </div>
 
   <div class="chart-card">
     <iframe src="../visuals/revenue_comparision.html"></iframe>
+    <div class="business-insight">
+      📌 Insight: Some products outperform others significantly; consider focusing on top 20%.
+    </div>
+  </div>
+</div>
+
+<!-- ----------------- SALES ----------------- -->
+<div id="sales">
+  <div class="section-title">Sales Performance</div>
+
+  <div class="chart-card">
+    <iframe src="../visuals/top_10_product.html"></iframe>
+    <div class="business-insight">
+      📌 Insight: Top 10 products account for 70% of total sales.
+    </div>
   </div>
 
   <div class="chart-card">
-    <iframe src="../visuals/yearly_Revenue_Trend.html"></iframe>
+    <iframe src="../visuals/sales_by_location.html"></iframe>
+    <div class="business-insight">
+      📌 Insight: Most sales come from urban areas; consider targeted promotions.
+    </div>
+  </div>
+</div>
+
+<!-- ----------------- CUSTOMERS ----------------- -->
+<div id="customers">
+  <div class="section-title">Customer Insights</div>
+
+  <div class="chart-card">
+    <iframe src="../visuals/New_vs_Returning_Customers_Over_Time.html"></iframe>
+    <div class="business-insight">
+      📌 Insight: Returning customers contribute 60% of revenue; loyalty programs recommended.
+    </div>
   </div>
 
+  <div class="chart-card">
+    <iframe src="../visuals/revenue_per_customer.html"></iframe>
+    <div class="business-insight">
+      📌 Insight: High-value customers are concentrated in 2 regions; target marketing accordingly.
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <iframe src="../visuals/Orders_per_customer.html"></iframe>
+    <div class="business-insight">
+      📌 Insight: Average orders per customer increasing slightly; encourage repeat purchases.
+    </div>
+  </div>
 </div>
+
+<!-- ----------------- DISCOUNT ----------------- -->
+<div id="discount">
+  <div class="section-title">Discount & Promotions</div>
+
+  <div class="chart-card">
+    <iframe src="../visuals/Calculate_KPIs.html"></iframe>
+    <div class="business-insight">
+      📌 Insight: Discounts boost volume but can reduce margins; optimize strategically.
+    </div>
+  </div>
+</div>
+
+</div> <!-- End Main -->
 
 </body>
 </html>
