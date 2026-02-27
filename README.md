@@ -1,4 +1,3 @@
-```
 <p align="center">
   <img src="banner.png" alt="Amazon Sales Dashboard Banner" width="100%">
 </p>
@@ -147,5 +146,4 @@ License: The dataset is shared under the CC BY-NC-SA 4.0 license (Attribution-No
 - Inspiration: Real-world e-commerce analytics & business intelligence workflows
 
 
-• February 2026
-```
+© February 2026
