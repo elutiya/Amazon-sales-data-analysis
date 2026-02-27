@@ -78,7 +78,7 @@ h1 {
 /* ----------------- IFRAME ----------------- */
 iframe {
   width: 100%;
-  height: 450px;
+  height: 550px; /* increased height */
   border: none;
   border-radius: 10px;
   background: white;
@@ -91,11 +91,46 @@ iframe {
   color: #a0aec0;
 }
 
+/* ----------------- READ MORE ----------------- */
+.business-insight .insight,
+.business-insight .recommendation {
+  display: block;
+  max-height: 60px;       /* show only a few lines */
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.business-insight.expanded .insight,
+.business-insight.expanded .recommendation {
+  max-height: 500px;      /* expanded height */
+}
+
+.read-more-btn {
+  color: #4cc9f0;
+  cursor: pointer;
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
 /* ----------------- SMOOTH SCROLL ----------------- */
 html {
   scroll-behavior: smooth;
 }
 </style>
+
+<script>
+function toggleReadMore(el) {
+    const parent = el.parentElement;
+    parent.classList.toggle("expanded");
+    if(parent.classList.contains("expanded")) {
+        el.textContent = "Read Less";
+    } else {
+        el.textContent = "Read More";
+    }
+}
+</script>
 </head>
 
 <body>
@@ -121,28 +156,27 @@ html {
   <div class="chart-card">
     <iframe src="../visuals/Calculate_KPIs.html"></iframe>
     <div class="business-insight">
-      📌 Insight: Revenue peaked in 2020 due to post-COVID recovery, slight drop in 2024.
+      <span class="insight">📌 Insight: Revenue peaked in 2020 due to post-COVID recovery, slight drop in 2024.</span>
+      <span class="recommendation">💡 Recommendation: Focus on top performing products and regions. Monitor monthly trends and adjust inventory and marketing strategies.</span>
+      <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
   <div class="chart-card">
-    <iframe src="../visuals/yearly_And_monthly_Revenue_Trend.html""></iframe>
+    <iframe src="../visuals/yearly_And_monthly_Revenue_Trend.html"></iframe>
     <div class="business-insight">
-      📌 Insight: Revenue peaked in 2020 due to post-COVID recovery, slight drop in 2024.
+      <span class="insight">📌 Insight: Yearly and monthly revenue trends show seasonal fluctuations and COVID impact.</span>
+      <span class="recommendation">💡 Recommendation: Adjust marketing campaigns and inventory based on monthly peaks. Investigate dips for revenue recovery opportunities.</span>
+      <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
   <div class="chart-card">
     <iframe src="../visuals/top_revenue.html"></iframe>
     <div class="business-insight">
-      📌 Insight: Some products outperform others significantly; consider focusing on top 20%.
-    </div>
-  </div>
-
-  <div class="chart-card">
-    <iframe src="../visuals/revenue_comparision.html"></iframe>
-    <div class="business-insight">
-      📌 Insight: Some products outperform others significantly; consider focusing on top 20%.
+      <span class="insight">📌 Insight: Some products outperform others significantly.</span>
+      <span class="recommendation">💡 Recommendation: Consider focusing on top 20% of products that generate most revenue.</span>
+      <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 </div>
@@ -154,21 +188,27 @@ html {
   <div class="chart-card">
     <iframe src="../visuals/top_10_product.html"></iframe>
     <div class="business-insight">
-      📌 Insight: Top 10 products account for 70% of total sales.
+      <span class="insight">📌 Insight: Top 10 products account for majority of sales.</span>
+      <span class="recommendation">💡 Recommendation: Focus promotions and inventory on these products to maximize sales.</span>
+      <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
   <div class="chart-card">
     <iframe src="../visuals/Price_Sensitivity_Analysis.html"></iframe>
     <div class="business-insight">
-      📌 Insight: Most sales come from urban areas; consider targeted promotions.
+      <span class="insight">📌 Insight: Price changes affect quantity sold noticeably.</span>
+      <span class="recommendation">💡 Recommendation: Adjust pricing strategically based on sensitivity analysis for higher revenue.</span>
+      <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
   
   <div class="chart-card">
     <iframe src="../visuals/sales_by_location.html"></iframe>
     <div class="business-insight">
-      📌 Insight: Most sales come from urban areas; consider targeted promotions.
+      <span class="insight">📌 Insight: Sales are concentrated in urban areas.</span>
+      <span class="recommendation">💡 Recommendation: Target marketing campaigns in top-performing regions.</span>
+      <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 </div>
@@ -180,21 +220,27 @@ html {
   <div class="chart-card">
     <iframe src="../visuals/revenue_per_customer.html"></iframe>
     <div class="business-insight">
-      📌 Insight: Returning customers contribute 60% of revenue; loyalty programs recommended.
+      <span class="insight">📌 Insight: Returning customers contribute significantly to revenue.</span>
+      <span class="recommendation">💡 Recommendation: Implement loyalty programs to retain high-value customers.</span>
+      <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
   <div class="chart-card">
     <iframe src="../visuals/Orders_per_customer.html"></iframe>
     <div class="business-insight">
-      📌 Insight: High-value customers are concentrated in 2 regions; target marketing accordingly.
+      <span class="insight">📌 Insight: Average orders per customer are increasing slightly.</span>
+      <span class="recommendation">💡 Recommendation: Encourage repeat purchases through promotions and personalized offers.</span>
+      <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
   <div class="chart-card">
     <iframe src="../visuals/New_vs_Returning_Customers_Over_Time.html"></iframe>
     <div class="business-insight">
-      📌 Insight: Average orders per customer increasing slightly; encourage repeat purchases.
+      <span class="insight">📌 Insight: Customer behavior varies between new and returning customers.</span>
+      <span class="recommendation">💡 Recommendation: Tailor engagement strategies for new vs. returning customers for better retention.</span>
+      <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 </div>
@@ -206,21 +252,27 @@ html {
   <div class="chart-card">
     <iframe src="../visuals/Discount_vs_Revenue_per_Order.html"></iframe>
     <div class="business-insight">
-      📌 Insight: Discounts boost volume but can reduce margins; optimize strategically.
+      <span class="insight">📌 Insight: Discounts boost volume but reduce margins.</span>
+      <span class="recommendation">💡 Recommendation: Optimize discounts strategically for profitability.</span>
+      <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
    <div class="chart-card">
     <iframe src="../visuals/Discounted_vs_Non-Discounted_Orders.html"></iframe>
     <div class="business-insight">
-      📌 Insight: Discounts boost volume but can reduce margins; optimize strategically.
+      <span class="insight">📌 Insight: Comparing discounted vs non-discounted orders highlights impact on sales volume.</span>
+      <span class="recommendation">💡 Recommendation: Adjust discount strategy to balance volume and margin.</span>
+      <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
    <div class="chart-card">
     <iframe src="../visuals/Average_Discount_by_Category.html"></iframe>
     <div class="business-insight">
-      📌 Insight: Discounts boost volume but can reduce margins; optimize strategically.
+      <span class="insight">📌 Insight: Average discount varies across product categories.</span>
+      <span class="recommendation">💡 Recommendation: Review category-specific discounts to maximize revenue efficiency.</span>
+      <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 </div>
