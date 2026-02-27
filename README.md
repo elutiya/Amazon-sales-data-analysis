@@ -50,7 +50,7 @@ Amazon-sales-data-analysis/
 ├── file/
 │   └── raw_data/
 │       └── Amazon.csv
-├── notebook/
+├── note book/
 │   └── amazon_data_cleaning.ipynb
 ├── visuals/
 │   └── *.html           # exported interactive charts
@@ -147,3 +147,4 @@ License: The dataset is shared under the CC BY-NC-SA 4.0 license (Attribution-No
 
 
 © February 2026
+
