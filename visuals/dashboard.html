@@ -15,7 +15,7 @@ body {
 
 h1 {
   text-align: center;
-  padding: 50px 0 30px; /* More space above title */
+  padding: 50px 0 30px;
   font-size: 36px;
 }
 
@@ -60,13 +60,6 @@ h1 {
   padding-left: 10px;
 }
 
-/* ----------------- KPI GRID ----------------- */
-.kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
 /* ----------------- CARDS ----------------- */
 .kpi-card, .chart-card {
   background: #1f2a38;
@@ -78,7 +71,7 @@ h1 {
 /* ----------------- IFRAME ----------------- */
 iframe {
   width: 100%;
-  height: 550px; /* increased height */
+  height: 550px;
   border: none;
   border-radius: 10px;
   background: white;
@@ -91,18 +84,21 @@ iframe {
   color: #a0aec0;
 }
 
-/* ----------------- READ MORE ----------------- */
-.business-insight .insight,
+.business-insight .insight {
+  display: block;
+}
+
+.business-insight .impact,
 .business-insight .recommendation {
   display: block;
-  max-height: 60px;       /* show only a few lines */
+  max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
 }
 
-.business-insight.expanded .insight,
+.business-insight.expanded .impact,
 .business-insight.expanded .recommendation {
-  max-height: 500px;      /* expanded height */
+  max-height: 500px;
 }
 
 .read-more-btn {
@@ -114,7 +110,6 @@ iframe {
   text-decoration: underline;
 }
 
-/* ----------------- SMOOTH SCROLL ----------------- */
 html {
   scroll-behavior: smooth;
 }
@@ -124,18 +119,13 @@ html {
 function toggleReadMore(el) {
     const parent = el.parentElement;
     parent.classList.toggle("expanded");
-    if(parent.classList.contains("expanded")) {
-        el.textContent = "Read Less";
-    } else {
-        el.textContent = "Read More";
-    }
+    el.textContent = parent.classList.contains("expanded") ? "Read Less" : "Read More";
 }
 </script>
 </head>
 
 <body>
 
-<!-- ----------------- SIDEBAR ----------------- -->
 <div class="sidebar">
   <h2>Dashboard</h2>
   <a href="#revenue">Revenue</a>
@@ -144,7 +134,6 @@ function toggleReadMore(el) {
   <a href="#discount">Discount</a>
 </div>
 
-<!-- ----------------- MAIN CONTENT ----------------- -->
 <div class="main">
 
 <h1>📊 Amazon Sales Dashboard</h1>
@@ -153,74 +142,92 @@ function toggleReadMore(el) {
 <div id="revenue">
   <div class="section-title">Revenue Analysis</div>
   <h4>This section provides a high-level financial overview of business performance, including revenue, order volume, customer base, product volume, and discount spending.</h4>
-  
+
+  <!-- Chart 1 -->
   <div class="chart-card">
     <iframe src="../visuals/Calculate_KPIs.html"></iframe>
     <div class="business-insight">
       <span class="insight">📊 Insight
+- Revenue is strong at $91.8M.
+- AOV ($918) is relatively high → customers place large-value orders.
+- 100K orders but 43K customers → repeat purchasing behavior.
+- Total discount given ($7,423) is extremely small compared to revenue.</span>
 
-                                Revenue is strong at $91.8M.
+      <span class="impact">💼 Business Impact
+- Strong customer retention (repeat buyers).
+- Discounts are not significantly reducing revenue.
+- Business is generating high revenue per transaction.</span>
 
-                                AOV ($918) is relatively high → customers place large-value orders.
+      <span class="recommendation">🎯 Recommendation
+- Focus on retention strategies (loyalty programs).
+- Since discount cost is low, test strategic promotions to increase volume further.</span>
 
-                                100K orders but 43K customers → repeat purchasing behavior.
-
-                                Total discount given ($7,423) is extremely small compared to revenue.
-                              
-                              Insight
-
-                                Revenue is strong at $91.8M.
-
-                                AOV ($918) is relatively high → customers place large-value orders.
-
-                                100K orders but 43K customers → repeat purchasing behavior.
-
-                                Total discount given ($7,423) is extremely small compared to revenue.Insight
-
-                                Revenue is strong at $91.8M.
-
-                                AOV ($918) is relatively high → customers place large-value orders.
-
-                                100K orders but 43K customers → repeat purchasing behavior.
-
-                                Total discount given ($7,423) is extremely small compared to revenue.</span>
-
-      <span class="Business impact">💼 Business Impact
-
-                                            Strong customer retention (repeat buyers).
-
-                                            Discounts are not significantly reducing revenue.
-
-                                            Business is generating high revenue per transaction.</span>
-
-      <span class="recommendation">💡 Recommendation: Adjust marketing campaigns and inventory based on monthly peaks. Investigate dips for revenue recovery opportunities.</span>
-
-                                       Since discount cost is low, test strategic promotions to increase volume further.</span>
       <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
+  <!-- Chart 2 -->
   <div class="chart-card">
     <iframe src="../visuals/yearly_And_monthly_Revenue_Trend.html"></iframe>
     <div class="business-insight">
-      <span class="insight">📌 Insight: Yearly and monthly revenue trends show seasonal fluctuations and COVID impact.</span>
-      <span class="Business impact">📌 💼 Business Impact
+      <span class="insight">📊 Insight
+- Monthly: Stable mid-year, slight drop at year-end.
+- Yearly: 2020 peak (COVID surge), 2021 drop, 2023 recovery, 2024 slight decline.</span>
 
-Strong customer retention (repeat buyers).
+      <span class="impact">💼 Business Impact
+- Seasonality affects cash flow and inventory.
+- Revenue sensitive to macro events; growth depends on sustainable strategies.</span>
 
-Discounts are not significantly reducing revenue.
+      <span class="recommendation">🎯 Recommendation
+- Plan marketing before peak months; offer promotions during slower periods.
+- Diversify products and focus on long-term growth over event-driven spikes.</span>
 
-Business is generating high revenue per transaction.</span>
-      <span class="recommendation">💡 Recommendation: Adjust marketing campaigns and inventory based on monthly peaks. Investigate dips for revenue recovery opportunities.</span>
       <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
+  <!-- Chart 3 -->
   <div class="chart-card">
     <iframe src="../visuals/top_revenue.html"></iframe>
     <div class="business-insight">
-      <span class="insight">📌 Insight: Some products outperform others significantly.</span>
-      <span class="recommendation">💡 Recommendation: Consider focusing on top 20% of products that generate most revenue.</span>
+      <span class="insight">📊 Insight
+- Highlights top-performing categories, products, and brands.
+- Reveals high-revenue sellers and locations.
+- Shows preferred payment methods driving the most revenue.
+- Identifies concentration of revenue — whether a few entities dominate or revenue is well-distributed.</span>
+
+      <span class="impact">💼 Business Impact
+- Helps focus marketing, inventory, and seller management on high-impact areas.
+- Reveals potential risks if revenue relies heavily on a few products, sellers, or regions.</span>
+
+      <span class="recommendation">🎯 Recommendation
+- Prioritize top-performing products, brands, and sellers for promotions.
+- Consider expanding in high-revenue locations like Texas.
+- Diversify offerings to reduce dependency on a few key entities.</span>
+
+      <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
+    </div>
+  </div>
+
+  <!-- Chart 4 -->
+  <div class="chart-card">
+    <iframe src="../visuals/Revenue_Comparision.html"></iframe>
+    <div class="business-insight">
+      <span class="insight">📊 Insight
+- Revenue is significantly higher than shipping cost and discounts.
+- Discounts have minimal impact on total revenue.
+- Shipping costs are small relative to revenue but scale with volume.</span>
+
+      <span class="impact">💼 Business Impact
+- Discounts are not hurting profitability.
+- Shipping cost management is important for margin control.
+- Helps identify areas to optimize costs without affecting sales.</span>
+
+      <span class="recommendation">🎯 Recommendation
+- Test targeted discounts to boost sales where needed.
+- Optimize shipping operations to reduce costs.
+- Monitor cost-to-revenue ratio as sales volume grows.</span>
+
       <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
@@ -230,29 +237,68 @@ Business is generating high revenue per transaction.</span>
 <div id="sales">
   <div class="section-title">Sales Performance</div>
 
+  <!-- Chart 5 -->
   <div class="chart-card">
     <iframe src="../visuals/top_10_product.html"></iframe>
     <div class="business-insight">
-      <span class="insight">📌 Insight: Top 10 products account for majority of sales.</span>
-      <span class="recommendation">💡 Recommendation: Focus promotions and inventory on these products to maximize sales.</span>
+      <span class="insight">📊 Insight
+- “Desk lamp” and “Water bottle” dominate sales, accounting for almost half of total quantity sold.
+- Mid-performing products like “memory card 128gb” show moderate sales, while products like “mechanical keyboard” are underperforming.</span>
+
+      <span class="impact">💼 Business Impact
+- High-selling products indicate strong demand and should be prioritized in inventory planning.
+- Low-performing products may be tying up warehouse space without generating significant revenue.</span>
+
+      <span class="recommendation">🎯 Recommendation
+- Run marketing campaigns for mid-tier products to increase volume.
+- Keep high-demand products fully stocked, especially before holidays.
+- Bundle low-performing products with popular items or offer limited-time promotions.
+- Monitor seasonal trends, e.g., desk lamps sell more during back-to-school months.</span>
+
       <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
+  <!-- Chart 6 -->
   <div class="chart-card">
     <iframe src="../visuals/Price_Sensitivity_Analysis.html"></iframe>
     <div class="business-insight">
-      <span class="insight">📌 Insight: Price changes affect quantity sold noticeably.</span>
-      <span class="recommendation">💡 Recommendation: Adjust pricing strategically based on sensitivity analysis for higher revenue.</span>
+      <span class="insight">📊 Insight
+- Sales volume fluctuates across price points; low prices do not always guarantee higher sales.
+- Certain mid-to-high price points see spikes in average quantity sold, suggesting perceived value.</span>
+
+      <span class="impact">💼 Business Impact
+- Pricing strategy cannot rely solely on low prices to drive sales.
+- Misaligned prices can result in missed revenue opportunities.
+- Premium pricing could be leveraged to maximize sales without deep discounting.</span>
+
+      <span class="recommendation">🎯 Recommendation
+- Focus marketing on price points where sales spike.
+- Consider bundling or value-added offers around price ranges with dips.
+- Test price adjustments strategically rather than applying uniform discounts.
+- Ensure popular price-point products are well-stocked.</span>
+
       <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
-  
+
+  <!-- Chart 7 -->
   <div class="chart-card">
     <iframe src="../visuals/sales_by_location.html"></iframe>
     <div class="business-insight">
-      <span class="insight">📌 Insight: Sales are concentrated in urban areas.</span>
-      <span class="recommendation">💡 Recommendation: Target marketing campaigns in top-performing regions.</span>
+      <span class="insight">📊 Insight
+- The USA, India, and Australia generate the highest revenue.
+- Europe, Africa, and South America are underperforming in comparison.</span>
+
+      <span class="impact">💼 Business Impact
+- Heavy reliance on a few countries increases risk if macroeconomic or regulatory conditions change.
+- Underperforming regions represent untapped growth opportunities.</span>
+
+      <span class="recommendation">🎯 Recommendation
+- Expand marketing and localized campaigns in high-potential but low-performing regions.
+- Strengthen logistics and distribution in top-performing regions.
+- Consider region-specific product assortments or promotions.</span>
+
       <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
@@ -262,29 +308,66 @@ Business is generating high revenue per transaction.</span>
 <div id="customers">
   <div class="section-title">Customer Insights</div>
 
+  <!-- Chart 8 -->
   <div class="chart-card">
     <iframe src="../visuals/revenue_per_customer.html"></iframe>
     <div class="business-insight">
-      <span class="insight">📌 Insight: Returning customers contribute significantly to revenue.</span>
-      <span class="recommendation">💡 Recommendation: Implement loyalty programs to retain high-value customers.</span>
+      <span class="insight">📊 Insight
+- Top 10% of customers contribute 25.8% of revenue, top 20% 44.8%, top 50% 79.12%.
+- Revenue skewed toward high-value customers, with mid-tier contributions.</span>
+
+      <span class="impact">💼 Business Impact
+- Retention of top 10–50% of customers is critical.
+- Neglecting mid-tier customers could reduce overall revenue.
+- Low-tier customers could be nurtured for upselling opportunities.</span>
+
+      <span class="recommendation">🎯 Recommendation
+- VIP programs for top 10–20% of customers.
+- Targeted campaigns for mid-tier customers (20–50%).
+- Loyalty rewards for low-tier customers.
+- Monitor revenue contribution changes over time.</span>
+
       <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
+  <!-- Chart 9 -->
   <div class="chart-card">
     <iframe src="../visuals/Orders_per_customer.html"></iframe>
     <div class="business-insight">
-      <span class="insight">📌 Insight: Average orders per customer are increasing slightly.</span>
-      <span class="recommendation">💡 Recommendation: Encourage repeat purchases through promotions and personalized offers.</span>
+      <span class="insight">📊 Insight
+- Most customers purchase only once or twice.
+- Very few customers purchase more than five times.</span>
+
+      <span class="impact">💼 Business Impact
+- High reliance on first-time buyers; repeat buyers limited, reducing lifetime value.</span>
+
+      <span class="recommendation">🎯 Recommendation
+- Email campaigns targeting first-time buyers.
+- Implement subscription models or loyalty points.
+- Bundle complementary products to increase order frequency.</span>
+
       <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
+  <!-- Chart 10 -->
   <div class="chart-card">
     <iframe src="../visuals/New_vs_Returning_Customers_Over_Time.html"></iframe>
     <div class="business-insight">
-      <span class="insight">📌 Insight: Customer behavior varies between new and returning customers.</span>
-      <span class="recommendation">💡 Recommendation: Tailor engagement strategies for new vs. returning customers for better retention.</span>
+      <span class="insight">📊 Insight
+- Returning customers steadily increased and surpassed new customers mid-2023.
+- Fluctuations in new customer acquisition suggest inconsistent marketing or seasonal demand.</span>
+
+      <span class="impact">💼 Business Impact
+- Retention is strong, growth limited without new customer acquisition.
+- Returning customers are crucial for predictable revenue.</span>
+
+      <span class="recommendation">🎯 Recommendation
+- Maintain retention campaigns while investing in acquisition strategies.
+- Monitor campaign impact on new customer acquisition.
+- Consider incentives for referring new customers.</span>
+
       <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
@@ -294,29 +377,62 @@ Business is generating high revenue per transaction.</span>
 <div id="discount">
   <div class="section-title">Discount & Promotions</div>
 
+  <!-- Chart 11 -->
   <div class="chart-card">
     <iframe src="../visuals/Discount_vs_Revenue_per_Order.html"></iframe>
     <div class="business-insight">
-      <span class="insight">📌 Insight: Discounts boost volume but reduce margins.</span>
-      <span class="recommendation">💡 Recommendation: Optimize discounts strategically for profitability.</span>
+      <span class="insight">📊 Insight
+- High discounts do not always correlate with higher revenue.
+- Some orders without discounts generate high revenue.</span>
+
+      <span class="impact">💼 Business Impact
+- Over-discounting may reduce profitability without increasing revenue.</span>
+
+      <span class="recommendation">🎯 Recommendation
+- Target discounts on price-sensitive or underperforming products.
+- Avoid large discounts on high-demand products.
+- Track ROI for each discount campaign.</span>
+
       <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
-   <div class="chart-card">
+  <!-- Chart 12 -->
+  <div class="chart-card">
     <iframe src="../visuals/Discounted_vs_Non-Discounted_Orders.html"></iframe>
     <div class="business-insight">
-      <span class="insight">📌 Insight: Comparing discounted vs non-discounted orders highlights impact on sales volume.</span>
-      <span class="recommendation">💡 Recommendation: Adjust discount strategy to balance volume and margin.</span>
+      <span class="insight">📊 Insight
+- Discounted orders generate more revenue due to higher volume.
+- Average revenue per order can be lower than non-discounted orders.</span>
+
+      <span class="impact">💼 Business Impact
+- Discounts increase quantity sold but may decrease profit margins.</span>
+
+      <span class="recommendation">🎯 Recommendation
+- Apply discounts strategically for volume growth, not by default.
+- Focus on low-margin or low-selling items.
+- Test different discount percentages to find optimal level.</span>
+
       <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
 
-   <div class="chart-card">
+  <!-- Chart 13 -->
+  <div class="chart-card">
     <iframe src="../visuals/Average_Discount_by_Category.html"></iframe>
     <div class="business-insight">
-      <span class="insight">📌 Insight: Average discount varies across product categories.</span>
-      <span class="recommendation">💡 Recommendation: Review category-specific discounts to maximize revenue efficiency.</span>
+      <span class="insight">📊 Insight
+- Electronics and Home & Kitchen receive higher average discounts.
+- Categories like Books and Sports have lower discounts.</span>
+
+      <span class="impact">💼 Business Impact
+- Mismanaged discounting could erode profits unnecessarily.</span>
+
+      <span class="recommendation">🎯 Recommendation
+- Reduce discounts on high-margin categories, allocate to volume-boost categories.
+- Use category-based discount strategies instead of uniform discounts.
+- Monitor impact on customer behavior and sales velocity.</span>
+
       <a href="javascript:void(0)" class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
     </div>
   </div>
