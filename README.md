@@ -47,7 +47,7 @@ The goal is to uncover actionable business insights about **revenue performance*
 
 ```
 Amazon-sales-data-analysis/
-├── file/
+├── file/~
 │   └── raw_data/
 │       └── Amazon.csv
 ├── notebook/
