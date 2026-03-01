@@ -52,6 +52,8 @@ Amazon-sales-data-analysis/
 │       └── Amazon.csv
 ├── notebook/
 │   └── amazon_data_cleaning.ipynb
+├── py file
+├   └──amazon_data_cleaning.py
 ├── visuals/
 │   └── *.html           # exported interactive charts
 ├── banner.png
