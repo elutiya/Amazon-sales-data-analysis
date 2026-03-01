@@ -50,7 +50,7 @@ Amazon-sales-data-analysis/
 ├── file/
 │   └── raw_data/
 │       └── Amazon.csv
-├── note book/
+├── notebook/
 │   └── amazon_data_cleaning.ipynb
 ├── visuals/
 │   └── *.html           # exported interactive charts
