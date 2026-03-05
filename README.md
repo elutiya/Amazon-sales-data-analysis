@@ -141,6 +141,11 @@ https://www.kaggle.com/datasets/rohiteng/amazon-sales-dataset
 License: The dataset is shared under the CC BY-NC-SA 4.0 license (Attribution-NonCommercial-ShareAlike 4.0 International)
 → You must give appropriate credit, may not use it for commercial purposes, and any derivatives must be shared under the same license.
 
+## Group member
+1 Eleni Tesheshigo
+2 Haiyleyesus Abayneh
+3 yalew Wondimgizaw
+
 ## 🙌 Acknowledgments
 
 - Dataset: Amazon Sales Dataset by rohiteng on Kaggle  
